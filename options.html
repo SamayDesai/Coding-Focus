@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>LeetCode Focus · Settings</title><link rel="stylesheet" href="css/app.css"></head>
+<body data-theme="system">
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">LF</div><div class="brand-copy"><h1>Settings</h1><p>Enforcement, problem lists, allowlist, and timer</p></div></div>
+      <div class="actions"><button id="openTimer" class="primary">Open timer dashboard</button><button id="exportBackup">Export backup</button><button id="restoreBackup">Restore backup</button><input id="backupFile" type="file" accept="application/json,.json" hidden></div>
+    </header>
+    <div id="toast" class="toast"></div>
+    <div class="grid">
+      <section class="card span-12">
+        <div class="card-header"><div><h2>Daily LeetCode requirement</h2><p class="muted" style="font-size:12px;margin:5px 0 0">A separate daily rule, independent of the Pomodoro timer.</p></div><label class="inline"><input id="dailyEnabled" type="checkbox"> Enforce one accepted problem each day</label></div>
+        <div class="form-grid">
+          <label>Active problem collection <select id="activeCollection"></select></label>
+          <label>Today's assignment <input id="dailyProblem" readonly></label>
+        </div>
+        <p class="field-hint" style="margin:12px 0 0">The assignment refreshes on the next local calendar day. Solving the exact assigned problem unlocks ordinary browsing for the rest of that day. Focus sessions may apply an additional block.</p>
+      </section>
+      <section class="card span-7">
+        <div class="card-header"><div><h2>Problem collections</h2><p class="muted" style="font-size:12px;margin:5px 0 0">Random selection without repeats until the list is exhausted.</p></div></div>
+        <div id="collections" class="collection-list"></div>
+        <hr>
+        <h2>Import a problem list</h2>
+        <div class="form-grid">
+          <label>Collection name <input id="collectionName" placeholder="e.g. Blind 75 or Citadel prep" maxlength="100"></label>
+          <label>Choose a file <input id="problemFile" type="file" accept=".txt,.csv,.json,text/plain,text/csv,application/json"></label>
+        </div>
+        <label style="margin-top:12px">Paste URLs, slugs, CSV rows, or JSON <textarea id="problemData" rows="7" placeholder="https://leetcode.com/problems/two-sum/&#10;https://leetcode.com/problems/valid-parentheses/&#10;... "></textarea></label>
+        <div class="form-actions"><button id="importCollection" class="primary">Import and activate collection</button></div>
+        <p class="field-hint" style="margin-top:8px">Accepts plain text, CSV containing LeetCode URLs/slugs, or JSON arrays/objects with slug, url, link, or titleSlug fields. Invalid entries and duplicates are skipped.</p>
+      </section>
+      <section class="card span-5">
+        <div class="card-header"><div><h2>Temporary disable</h2><p class="muted" style="font-size:12px;margin:5px 0 0">The timer expires automatically and restores the active policies.</p></div></div>
+        <label>Duration in minutes <input id="bypassMinutes" type="number" min="1" max="1440" value="30"></label>
+        <div class="button-row" style="margin-top:12px"><button id="startBypass" class="primary">Disable temporarily</button><button id="clearBypass">End bypass</button></div>
+        <p id="bypassStatus" class="field-hint" style="margin-top:10px">No active bypass.</p>
+        <hr>
+        <label class="inline"><input id="themeSync" type="checkbox"> Use timer theme on settings pages</label>
+        <p class="field-hint" style="margin-top:8px">Theme and accent options are configured on the timer dashboard.</p>
+      </section>
+      <section class="card span-12">
+        <div class="card-header"><div><h2>Website allowlist</h2><p class="muted" style="font-size:12px;margin:5px 0 0">Allowlisted websites remain accessible while the daily gate or focus timer is blocking the rest of Chrome.</p></div><button id="saveAllowlist" class="primary">Save allowlist</button></div>
+        <div class="form-grid" style="align-items:end;margin-bottom:14px">
+          <label>Domain to add <input id="newDomain" placeholder="docs.example.com"></label>
+          <div><label class="inline"><input id="newIncludeSubdomains" type="checkbox" checked> Include subdomains</label><div class="button-row" style="margin-top:9px"><button id="addDomain">Add domain</button><button id="resetAllowlist">Restore default allowlist</button></div></div>
+        </div>
+        <div id="allowlistGroups" class="domain-list"></div>
+        <p class="field-hint" style="margin-top:12px">Google Search regional hosts are exact-host entries so adding Google Search does not automatically allow Drive, YouTube, or every other Google service. Custom entries can include subdomains if desired. LeetCode remains allowed independently.</p>
+      </section>
+      <section class="card span-12">
+        <div class="card-header"><div><h2>Data and permissions</h2><p class="muted" style="font-size:12px;margin:5px 0 0">All settings and timer statistics are stored locally in Chrome.</p></div></div>
+        <p>To enforce the allowlist, Chrome must let this extension redirect website navigations. This extension does not send your browsing history, problem lists, or timer history to a server.</p>
+        <div class="button-row"><button id="openTimer2">Open timer dashboard</button><button id="resetTimerData" class="danger">Reset timer session (keep settings)</button></div>
+      </section>
+    </div>
+    <footer>LeetCode Focus · Local-only Chrome extension</footer>
+  </main>
+  <script src="js/shared.js"></script><script src="js/options.js"></script>
+</body></html>

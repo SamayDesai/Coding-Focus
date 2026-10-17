@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Blocked · LeetCode Focus</title><link rel="stylesheet" href="css/app.css"></head>
+<body class="blocked-body" data-theme="system">
+  <section class="card blocked-card">
+    <div class="blocked-icon">⌁</div>
+    <div class="eyebrow">LeetCode Focus</div>
+    <h1 id="blockedHeading" style="font-size:28px;margin:7px 0 10px">This site is blocked right now.</h1>
+    <p id="blockedDescription" class="muted">Your current focus policy only allows LeetCode and sites on your allowlist.</p>
+    <div class="card" style="padding:14px;margin:18px 0">
+      <div class="eyebrow">Current requirement</div>
+      <div id="requiredTitle" class="problem-title">Loading daily assignment…</div>
+      <p id="requiredDescription" class="muted" style="font-size:12px">Complete today's assigned problem to unlock browsing.</p>
+      <div class="button-row"><button id="openRequired" class="primary">Open required problem</button><button id="openTimer">Timer dashboard</button></div>
+    </div>
+    <div class="card" style="padding:14px;margin-bottom:18px">
+      <div class="card-header"><h2 style="margin:0">Need a temporary break?</h2><span id="lockReason" class="status-pill locked">Blocked</span></div>
+      <div class="inline-row"><select id="bypassMinutes"><option value="15">15 minutes</option><option value="30">30 minutes</option><option value="60">1 hour</option><option value="120">2 hours</option></select><button id="bypass" class="primary">Disable</button></div>
+      <p id="bypassInfo" class="field-hint" style="margin:10px 0 0">The original policy will resume automatically when the timer expires.</p>
+    </div>
+    <div class="button-row"><button id="openSettings">Edit allowlist / settings</button><button id="openLeetCode">Open LeetCode</button></div>
+    <p class="field-hint" style="margin-top:16px">If this domain should always be accessible, add it to your allowlist in settings.</p>
+  </section>
+  <script src="js/shared.js"></script><script src="js/blocked.js"></script>
+</body></html>

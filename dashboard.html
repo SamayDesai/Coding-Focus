@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LeetCode Focus · Timer</title><link rel="stylesheet" href="css/app.css">
+</head>
+<body data-theme="system">
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">LF</div><div class="brand-copy"><h1>Focus timer</h1><p>Tomodoro-style timer for implementation and review</p></div></div>
+      <div class="actions"><button id="openPip" class="primary">▣ Open floating timer</button><button id="openSettings">Settings</button><button id="backToPopup" title="Popup is available from the toolbar">Toolbar popup ↗</button></div>
+    </header>
+    <div id="toast" class="toast"></div>
+    <div class="grid">
+      <section class="card span-7">
+        <div class="card-header"><div><div class="eyebrow" id="phaseEyebrow">READY TO FOCUS</div><h2 id="phaseTitle" style="margin-top:5px">Implementation</h2></div><span id="timerStatus" class="status-pill">Idle</span></div>
+        <div id="bigTime" class="big-time">30:00</div>
+        <div class="timer-track"><div id="progressBar"></div></div>
+        <div class="progress-labels"><span id="timeRemainingLabel">30 minutes remaining</span><span id="roundProgress">0 / 10 problems</span></div>
+        <div class="button-row" style="margin-top:18px"><button id="startPause" class="primary">Start focus</button><button id="skipPhase">Skip phase →</button><button id="skipBreak">Skip break</button><button id="resetTimer">Reset</button></div>
+        <hr>
+        <label>Current task / problem label <input id="taskLabel" maxlength="120" placeholder="e.g. NeetCode 150 practice"></label>
+        <p class="field-hint" style="margin-top:8px">This is just a timer label. It does not force a specific LeetCode problem or affect daily enforcement.</p>
+      </section>
+      <section class="card span-5">
+        <div class="card-header"><h2>Session overview</h2><span class="status-pill" id="sessionStatus">No active session</span></div>
+        <div class="grid" style="gap:12px">
+          <div class="span-6"><div class="stat-value" id="cyclesDone">0</div><div class="stat-label">Problems completed this set</div></div>
+          <div class="span-6"><div class="stat-value" id="cyclesGoal">10</div><div class="stat-label">Problems per session</div></div>
+          <div class="span-12" style="margin-top:6px"><div class="stat-value" id="totalFocus">0m</div><div class="stat-label">Total recorded focus time</div></div>
+        </div>
+        <hr>
+        <div class="eyebrow" style="margin-bottom:10px">Current access policy</div>
+        <p id="blockingStatus" style="margin-bottom:5px">Checking…</p>
+        <p class="field-hint">The timer blocks ordinary sites only during implementation and review. During breaks, the focus restriction lifts, but an unfinished daily requirement still applies.</p>
+        <div class="button-row" style="margin-top:14px"><button id="openRequired">Open daily problem</button><button id="manageLists">Manage problem lists</button></div>
+      </section>
+      <section class="card span-12">
+        <div class="card-header"><div><h2>Timer settings</h2><p class="muted" style="font-size:12px;margin:5px 0 0">Durations are in minutes. Short breaks happen after each problem cycle; a long break follows the configured number of cycles.</p></div><button id="saveSettings" class="primary">Save timer settings</button></div>
+        <div class="form-grid three">
+          <label>Implementation <input id="implementationMinutes" type="number" min="1" max="1440"></label>
+          <label>Solution review <input id="reviewMinutes" type="number" min="1" max="1440"></label>
+          <label>Short break <input id="shortBreakMinutes" type="number" min="0" max="1440"></label>
+          <label>Long break <input id="longBreakMinutes" type="number" min="0" max="1440"></label>
+          <label>Problems per session <input id="roundsPerSession" type="number" min="1" max="100"></label>
+          <label>Theme <select id="theme"><option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option></select></label>
+        </div>
+        <div class="form-grid" style="margin-top:14px">
+          <label class="inline"><input id="autoStartFocus" type="checkbox"> Automatically start focus after breaks</label>
+          <label class="inline"><input id="autoStartBreak" type="checkbox"> Automatically start breaks after review</label>
+          <label class="inline"><input id="notifications" type="checkbox"> Desktop notifications at phase changes</label>
+          <label class="inline"><input id="sound" type="checkbox"> Play a short sound on phase changes</label>
+          <label class="inline"><input id="whiteNoise" type="checkbox"> White noise during focus (dashboard open)</label>
+          <label>Accent color <input id="accent" type="color" value="#5b5bd6"></label>
+        </div>
+        <p class="field-hint" style="margin:12px 0 0">Changing the configured duration updates future phases. The currently running phase continues to its existing deadline.</p>
+      </section>
+      <section class="card span-12">
+        <div class="card-header"><div><h2>Time by task</h2><p class="muted" style="font-size:12px;margin:5px 0 0">Recorded focus time is stored locally on this device.</p></div></div>
+        <div id="taskStats"><div class="empty-state">Start a focus phase to build your statistics.</div></div>
+      </section>
+    </div>
+    <footer>LeetCode Focus stores timer settings and history locally in Chrome.</footer>
+  </main>
+  <script src="js/shared.js"></script><script src="js/dashboard.js"></script>
+</body></html>

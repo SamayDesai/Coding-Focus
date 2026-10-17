@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LeetCode Focus</title><link rel="stylesheet" href="css/app.css">
+</head>
+<body class="popup-body" data-theme="system">
+  <header class="topbar">
+    <div class="brand"><div class="brand-mark">LF</div><div class="brand-copy"><h1>LeetCode Focus</h1><p id="statusLine">Checking status…</p></div></div>
+    <button id="openSettings" class="subtle" title="Settings">⚙</button>
+  </header>
+  <div id="toast" class="toast"></div>
+  <section class="card">
+    <div class="card-header"><span class="eyebrow">Daily requirement</span><span id="dailyPill" class="status-pill">Loading</span></div>
+    <div id="dailyTitle" class="problem-title">Loading today’s problem…</div>
+    <p id="dailyHint" class="muted" style="font-size:12px;margin-bottom:12px">Solve the assigned problem to unlock browsing for the rest of the day.</p>
+    <div class="button-row"><button id="openDaily" class="primary">Open required problem</button><button id="markDailyDone" title="Use if the LeetCode completion detector missed an Accepted result">Recheck Accepted</button></div>
+  </section>
+  <section class="card">
+    <div class="card-header"><span class="eyebrow">Optional next problem</span><button id="refreshSuggestion" class="subtle" title="Pick another suggestion">↻</button></div>
+    <div id="nextTitle" class="problem-title">Loading…</div>
+    <div class="button-row"><button id="openNext" class="primary">Open suggestion</button></div>
+  </section>
+  <section class="card">
+    <div class="card-header"><span class="eyebrow">Focus timer</span><span id="timerPill" class="status-pill">Idle</span></div>
+    <div id="timerTime" style="font-size:29px;font-weight:760;letter-spacing:-.05em;font-variant-numeric:tabular-nums;margin:4px 0 8px">30:00</div>
+    <div id="timerPhase" class="muted" style="font-size:12px;margin-bottom:11px">Implementation · 0 / 10 problems</div>
+    <div class="button-row"><button id="toggleTimer" class="primary">Start focus</button><button id="skipTimer">Skip phase</button><button id="openTimer">Full timer ↗</button></div>
+  </section>
+  <section class="card">
+    <div class="card-header"><span class="eyebrow">Temporary disable</span><span id="bypassRemaining" class="muted" style="font-size:11px"></span></div>
+    <div class="inline-row" style="margin-bottom:9px"><select id="bypassPreset" aria-label="Disable duration"><option value="15">15 minutes</option><option value="30">30 minutes</option><option value="60">1 hour</option><option value="120">2 hours</option><option value="custom">Custom…</option></select><input id="customBypass" type="number" min="1" max="1440" value="45" style="max-width:86px;display:none" aria-label="Custom minutes"></div>
+    <div class="button-row"><button id="startBypass">Temporarily disable</button><button id="endBypass" class="subtle">End bypass</button></div>
+  </section>
+  <footer><span id="lockExplanation">Your allowlist stays available while blocking is active.</span></footer>
+  <script src="js/shared.js"></script><script src="js/popup.js"></script>
+</body></html>
